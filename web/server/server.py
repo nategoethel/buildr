@@ -1,10 +1,12 @@
-from flask import Flask
+from flask import Flask, render_template
+import os
 
-app = Flask(__name__)
+template_dir = os.path.abspath('../web_app/templates')
+app = Flask(__name__, template_folder=template_dir)
 
 @app.route('/')
 def index():
-    return 'Hello World'
+    return render_template('index.html')
 
 @app.route('/cakes')
 def cakes():
